@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink-toned dark base (not pure black, not purple) */
+  --color-ink: #0b0f14;
+  --color-surface: #121922;
+  --color-surface-2: #182130;
+  --color-line: #232d3a;
+  --color-fg: #e7edf3;
+  --color-muted: #8a97a6;
+  --color-muted-2: #5b6672;
+
+  /* Two semantic accents, used like syntax-highlight tokens */
+  --color-accent: #45d9c8;      /* cyan, interactive / primary */
+  --color-accent-dim: #2b8f86;
+  --color-gold: #e7b84b;        /* amber, emphasis / numbers */
+  --color-gold-dim: #a9843a;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    /* subtle dark gradient using the accent/gold theme colors, fixed
+       so it reads as one continuous backdrop behind every section */
+    background-image: radial-gradient(
+        900px 600px at 15% -5%,
+        rgba(69, 217, 200, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(700px 500px at 100% 20%, rgba(231, 184, 75, 0.07), transparent 60%),
+      radial-gradient(800px 600px at 50% 100%, rgba(69, 217, 200, 0.06), transparent 60%),
+      linear-gradient(180deg, #0b0f14 0%, #0a0e13 40%, #0d1219 70%, #0a0e13 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 999px;
+    border: 2px solid var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes soft-drift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+}
+
+@keyframes caret-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

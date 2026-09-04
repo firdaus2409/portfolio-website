@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <rect width="48" height="48" rx="10" fill="#0b0f14"/>
+  <rect x="1.25" y="1.25" width="45.5" height="45.5" rx="8.75" fill="none" stroke="#45d9c8" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="24" y="31" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="18" font-weight="600" fill="#45d9c8" text-anchor="middle">IF</text>
+</svg>
